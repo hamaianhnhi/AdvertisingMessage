@@ -36,7 +36,6 @@ public class RandomizerTest {
     public void randomIntInRange_ValidData_ResultShouldBeInsideBounds(){
         Radomizer radomizer = new Radomizer();
         int random = radomizer.randomIntInRange(4,7);
-        System.out.println("randomIntInRange_ValidData_ResultShouldBeInsideBounds" + random);
         Assert.assertEquals((random <= 7), true);
         Assert.assertEquals((random >= 4), true);
 

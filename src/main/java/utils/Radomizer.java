@@ -16,7 +16,7 @@ public class Radomizer {
         for (int i = 0; i < weightArray.length; i++) {
 
             if(randomWeight < weightArray[i]){
-                System.out.println(weightArray[i]);
+                System.out.println(weightArray[i]);//TODO: remove this
                 return i;// this is selected item
             }
             randomWeight = randomWeight - weightArray[i];
