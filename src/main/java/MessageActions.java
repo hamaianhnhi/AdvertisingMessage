@@ -8,7 +8,7 @@ public class MessageActions {
      * @return an integer telling index of selected item from given weightArray.
      * @throws IllegalArgumentException
      */
-    public int weightedRandomMessageToPublic(int weightArray[])
+    public int getWeightedRandomMessageToPublic(int weightArray[])
             throws IllegalArgumentException{
 
         // we validate N: 1 ≤ N ≤ 100
@@ -24,7 +24,7 @@ public class MessageActions {
         }
 
         Radomizer radomizer = new Radomizer();
-        int randomMessageVersion = radomizer.weightedRandomFromArray(weightArray);
+        int randomMessageVersion = radomizer.getWeightedRandomFromArray(weightArray);
         return randomMessageVersion;// messageVersion is item's index
     }
 }

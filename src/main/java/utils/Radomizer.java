@@ -9,22 +9,21 @@ public class Radomizer {
      * @param weightArray the integer array which contains member's weight
      * @return the index of the item which is selected from weightArray
      */
-    public int weightedRandomFromArray(int weightArray[]){
+    public int getWeightedRandomFromArray(int weightArray[]){
         int totalWeight = 0;
         // we calculate the totalWeight
         for (int i = 0; i < weightArray.length; i++) {
-            totalWeight = totalWeight + weightArray[i];
+            totalWeight += weightArray[i];
         }
 
         // we pick a random number: 0 < random number < totalWeight
         double randomWeight = Math.random() * totalWeight;
         for (int i = 0; i < weightArray.length; i++) {
-
             if(randomWeight < weightArray[i]){
                 System.out.println(weightArray[i]);//TODO: remove this
                 return i;// this is selected item
             }
-            randomWeight = randomWeight - weightArray[i];
+            randomWeight -= weightArray[i];
         }
         return 0; // it will never reach here
     }
