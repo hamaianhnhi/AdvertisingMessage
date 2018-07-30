@@ -7,70 +7,70 @@ import java.util.ArrayList;
 public class MessageActionsTest {
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void randomMessageToPublic_WithN_GreaterThan100_ShouldThrowException() throws IllegalArgumentException{
+    public void testRandomMessageToPublic_WithN_GreaterThan100_ShouldThrowException() throws IllegalArgumentException{
         ArrayList randomList = new ArrayList();
         for (int i = 0; i < 101; i++) {
             Radomizer radomizer = new Radomizer();
             randomList.add(radomizer.randomIntInRange(1, 100));
         }
         int[] randomArray = Ints.toArray(randomList);
-        MessageActions message = new MessageActions();
-        message.weightedRandomMessageToPublic(randomArray);
+        MessageActions messageActions = new MessageActions();
+        messageActions.getWeightedRandomMessageToPublic(randomArray);
     }
 
     @Test
-    public void randomMessageToPublic_WithN_is100_ShouldThrowException() throws IllegalArgumentException{
+    public void testRandomMessageToPublic_WithN_is100_ShouldThrowException() throws IllegalArgumentException{
         ArrayList randomList = new ArrayList();
         for (int i = 0; i < 100; i++) {
             Radomizer radomizer = new Radomizer();
             randomList.add(radomizer.randomIntInRange(1, 100));
         }
         int[] randomArray = Ints.toArray(randomList);
-        MessageActions message = new MessageActions();
-        Assert.assertNotNull(message.weightedRandomMessageToPublic(randomArray));
+        MessageActions messageActions = new MessageActions();
+        Assert.assertNotNull(messageActions.getWeightedRandomMessageToPublic(randomArray));
     }
 
     @Test
-    public void randomMessageToPublic_WithN_is1_ShouldThrowException() throws IllegalArgumentException{
+    public void testRandomMessageToPublic_WithN_is1_ShouldThrowException() throws IllegalArgumentException{
         int[] oneMemberArray = {8};
-        MessageActions message = new MessageActions();
-        Assert.assertNotNull(message.weightedRandomMessageToPublic(oneMemberArray));
-    }
-
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public void randomMessageToPublic_WithN_LessThan1_ShouldThrowException() throws IllegalArgumentException{
-        int array[] = {};
         MessageActions messageActions = new MessageActions();
-        messageActions.weightedRandomMessageToPublic(array);
+        Assert.assertNotNull(messageActions.getWeightedRandomMessageToPublic(oneMemberArray));
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void randomMessageToPublic_WeightGreaterThan10Pow9_ShouldThrowException() throws IllegalArgumentException{
+    public void testRandomMessageToPublic_WithN_LessThan1_ShouldThrowException() throws IllegalArgumentException{
+        int weightArray[] = {};
+        MessageActions messageActions = new MessageActions();
+        messageActions.getWeightedRandomMessageToPublic(weightArray);
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testRandomMessageToPublic_WeightGreaterThan10Pow9_ShouldThrowException() throws IllegalArgumentException{
         int tenPow9 = (int)Math.pow(10, 9);
-        int array[] = {tenPow9 + 1};
+        int weightArray[] = {tenPow9 + 1};
         MessageActions messageActions = new MessageActions();
-        messageActions.weightedRandomMessageToPublic(array);
+        messageActions.getWeightedRandomMessageToPublic(weightArray);
+    }
+
+    @Test
+    public void testRandomMessageToPublic_WeightIs10Pow9_ShouldBePassed() throws IllegalArgumentException{
+        int tenPow9 = (int)Math.pow(10, 9);
+        int weightArray[] = {tenPow9};
+        MessageActions messageActions = new MessageActions();
+        Assert.assertEquals(weightArray[messageActions.getWeightedRandomMessageToPublic(weightArray)], tenPow9);
+    }
+
+    @Test(expectedExceptions = IllegalArgumentException.class)
+    public void testRandomMessageToPublic_WeightLessThan0_ShouldThrowException() throws IllegalArgumentException{
+        int weightArray[] = {-1, 5, 6};
+        MessageActions messageActions = new MessageActions();
+        messageActions.getWeightedRandomMessageToPublic(weightArray);
     }
 
     @Test()
-    public void randomMessageToPublic_WeightIs10Pow9_ShouldBePassed() throws IllegalArgumentException{
-        int tenPow9 = (int)Math.pow(10, 9);
-        int array[] = {tenPow9};
+    public void testRandomMessageToPublic_WeightIs0_ShouldBePassed() throws IllegalArgumentException{
+        int weightArray[] = {0};
         MessageActions messageActions = new MessageActions();
-        Assert.assertEquals(array[messageActions.weightedRandomMessageToPublic(array)], tenPow9);
-    }
-
-    @Test(expectedExceptions = IllegalArgumentException.class)
-    public void randomMessageToPublic_WeightLessThan0_ShouldThrowException() throws IllegalArgumentException{
-        int array[] = {-1, 5, 6};
-        MessageActions messageActions = new MessageActions();
-        messageActions.weightedRandomMessageToPublic(array);
-    }
-
-    @Test()
-    public void randomMessageToPublic_WeightIs0_ShouldBePassed() throws IllegalArgumentException{
-        int array[] = {0};
-        MessageActions messageActions = new MessageActions();
-        Assert.assertEquals(array[messageActions.weightedRandomMessageToPublic(array)], 0);
+        Assert.assertEquals(weightArray[messageActions.getWeightedRandomMessageToPublic(weightArray)], 0);
     }
 }

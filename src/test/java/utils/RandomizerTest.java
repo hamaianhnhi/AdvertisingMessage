@@ -7,12 +7,12 @@ import java.util.ArrayList;
 public class RandomizerTest {
 
     @Test
-    public void weightedRandomFromArray_WithValidData_ShouldBePassed(){
+    public void testGetWeightedRandomFromArray_WithValidData_ShouldBePassed(){
         int array[] = {1, 4, 5, 2, 6};
         Radomizer radomizer = new Radomizer();
         ArrayList selectedItemIndexs = new ArrayList();
         for (int i = 0; i < 100 ; i++) {
-            int selectedItemIndex = radomizer.weightedRandomFromArray(array);
+            int selectedItemIndex = radomizer.getWeightedRandomFromArray(array);
             selectedItemIndexs.add(selectedItemIndex);
         }
         Assert.assertEquals(selectedItemIndexs.size(), 100);
@@ -20,19 +20,19 @@ public class RandomizerTest {
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void randomIntInRange_MinGreaterThanMax_ShouldThrowException(){
+    public void testRandomIntInRange_MinGreaterThanMax_ShouldThrowException(){
         Radomizer radomizer = new Radomizer();
         radomizer.randomIntInRange(3,2);
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void randomIntInRange_MinIsEqualToMax_ShouldThrowException(){
+    public void testRandomIntInRange_MinEqualToMax_ShouldThrowException(){
         Radomizer radomizer = new Radomizer();
         radomizer.randomIntInRange(2,2);
     }
 
     @Test
-    public void randomIntInRange_ValidData_ResultShouldBeInsideBounds(){
+    public void TestRandomIntInRange_WithValidInput_ResultShouldBeInsideBounds(){
         Radomizer radomizer = new Radomizer();
         int random = radomizer.randomIntInRange(4,7);
         Assert.assertEquals((random <= 7), true);
