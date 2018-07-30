@@ -13,7 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing
 
-Clone project by following command the we are ready to go
+Clone project by following command then we're ready to go
 ```
 git clone git@github.com:hamaianhnhi/AdvertisingMessage.git
 ```
