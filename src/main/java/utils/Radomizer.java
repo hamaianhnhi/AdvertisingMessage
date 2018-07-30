@@ -5,7 +5,7 @@ import java.util.Random;
 public class Radomizer {
 
     /**
-     * This returns an int that referring to selected item's index.
+     * This returns an integer number that referring to selected item's index.
      * @param weightArray the integer array which contains member's weight
      * @return the index of the item which is selected from weightArray
      */
@@ -30,7 +30,7 @@ public class Radomizer {
     }
 
     /**
-     * This return an integer number which greater than or equal to min; and less than or equal to max
+     * This returns an integer number which greater than or equal to min; and less than or equal to max
      * @param min the minimum value of the range in integer
      * @param max the maximum value of the range in integer
      * @return the integer number which greater than or equal to min; and less than or equal to max
