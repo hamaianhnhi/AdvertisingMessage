@@ -15,9 +15,8 @@ public class RandomizerTest {
             int selectedItemIndex = radomizer.weightedRandomFromArray(array);
             selectedItemIndexs.add(selectedItemIndex);
         }
-        Assert.assertNotNull(selectedItemIndexs);
         Assert.assertEquals(selectedItemIndexs.size(), 100);
-        Assert.assertEquals(selectedItemIndexs.contains(0), true);
+        Assert.assertEquals(selectedItemIndexs.contains(0), true);//TODO: need improvement
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
