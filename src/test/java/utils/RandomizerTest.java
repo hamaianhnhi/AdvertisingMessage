@@ -8,15 +8,17 @@ public class RandomizerTest {
 
     @Test
     public void testGetWeightedRandomFromArray_WithValidData_ShouldBePassed(){
-        int array[] = {1, 4, 5, 2, 6};
+        int array[] = {1, 1, 2};
         Radomizer radomizer = new Radomizer();
         ArrayList selectedItemIndexs = new ArrayList();
-        for (int i = 0; i < 100 ; i++) {
+        for (int i = 0; i < 4 ; i++) {
             int selectedItemIndex = radomizer.getWeightedRandomFromArray(array);
             selectedItemIndexs.add(selectedItemIndex);
         }
-        Assert.assertEquals(selectedItemIndexs.size(), 100);
-        Assert.assertEquals(selectedItemIndexs.contains(0), true);//TODO: need improvement
+        ArrayUtils arrayUtils = new ArrayUtils();
+        Assert.assertEquals((arrayUtils.indexOfAll(0, selectedItemIndexs).size()), 1);
+        Assert.assertEquals((arrayUtils.indexOfAll(1, selectedItemIndexs).size()), 1);
+        Assert.assertEquals((arrayUtils.indexOfAll(2, selectedItemIndexs).size()), 2);
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
