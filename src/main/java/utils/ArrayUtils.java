@@ -13,4 +13,9 @@ public class ArrayUtils {
         }
         return indexListToReturn;
     }
+
+    public int findOccurrencesInArray(int numberToFind, ArrayList arrayList){
+        ArrayList indexOfOccurrences = indexOfAll(numberToFind, arrayList);
+        return indexOfOccurrences.size();
+    }
 }

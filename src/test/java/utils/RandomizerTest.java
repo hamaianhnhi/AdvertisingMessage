@@ -8,17 +8,29 @@ public class RandomizerTest {
 
     @Test
     public void testGetWeightedRandomFromArray_WithValidData_ShouldBePassed(){
-        int array[] = {1, 1, 2};
+        int array[] = {50, 30, 60};
         Radomizer radomizer = new Radomizer();
         ArrayList selectedItemIndexs = new ArrayList();
-        for (int i = 0; i < 4 ; i++) {
+        for (int i = 0; i < 280 ; i++) {
             int selectedItemIndex = radomizer.getWeightedRandomFromArray(array);
             selectedItemIndexs.add(selectedItemIndex);
         }
+
         ArrayUtils arrayUtils = new ArrayUtils();
-        Assert.assertEquals((arrayUtils.indexOfAll(0, selectedItemIndexs).size()), 1);
-        Assert.assertEquals((arrayUtils.indexOfAll(1, selectedItemIndexs).size()), 1);
-        Assert.assertEquals((arrayUtils.indexOfAll(2, selectedItemIndexs).size()), 2);
+        int a0 = arrayUtils.findOccurrencesInArray(0, selectedItemIndexs);
+        int a1 = arrayUtils.findOccurrencesInArray(1, selectedItemIndexs);
+        int a2 = arrayUtils.findOccurrencesInArray(2, selectedItemIndexs);
+
+        double acceptableDiff = 0.1;
+
+        int e0 = 100; //expected of a0
+        int e1 = 60;  //expected of a1
+        int e2 = 120; //expected of a2
+
+        // verify that a should be in bounds [e - acceptableDiff; e + acceptableDiff]
+        Assert.assertEquals((( a0 >= (e0 - (e0 * acceptableDiff)))  &&  (a0  <=  (e0 + (e0 * acceptableDiff)))), true);
+        Assert.assertEquals((( a1 >= (e1 - (e1 * acceptableDiff)))  &&  (a1  <=  (e1 + (e1 * acceptableDiff)))), true);
+        Assert.assertEquals((( a2 >= (e2 - (e2 * acceptableDiff)))  &&  (a2  <=  (e2 + (e2 * acceptableDiff)))), true);
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
