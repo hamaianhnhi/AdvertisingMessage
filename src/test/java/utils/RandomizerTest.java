@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class RandomizerTest {
 
     @Test
-    public void testGetWeightedRandomFromArray_WithValidData_ShouldBePassed(){
+    public void testGetWeightedRandomFromArray_WithValidData_ShouldSatisfyWeightedRandomCondition(){
         int array[] = {50, 30, 60};
         Radomizer radomizer = new Radomizer();
         ArrayList selectedItemIndexs = new ArrayList();
