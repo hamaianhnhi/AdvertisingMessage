@@ -16,21 +16,22 @@ public class RandomizerTest {
             selectedItemIndexs.add(selectedItemIndex);
         }
 
+        // we count occurrences of each item in array
         ArrayUtils arrayUtils = new ArrayUtils();
-        int a0 = arrayUtils.findOccurrencesInArray(0, selectedItemIndexs);
-        int a1 = arrayUtils.findOccurrencesInArray(1, selectedItemIndexs);
-        int a2 = arrayUtils.findOccurrencesInArray(2, selectedItemIndexs);
+        int occ0 = arrayUtils.findOccurrencesInArray(0, selectedItemIndexs);
+        int occ1 = arrayUtils.findOccurrencesInArray(1, selectedItemIndexs);
+        int occ2 = arrayUtils.findOccurrencesInArray(2, selectedItemIndexs);
 
         double acceptableDiff = 0.1;
 
-        int e0 = 100; //expected of a0
-        int e1 = 60;  //expected of a1
-        int e2 = 120; //expected of a2
+        int e0 = 100; //expected of occ0
+        int e1 = 60;  //expected of occ1
+        int e2 = 120; //expected of occ2
 
         // verify that a should be in bounds [e - acceptableDiff; e + acceptableDiff]
-        Assert.assertEquals((( a0 >= (e0 - (e0 * acceptableDiff)))  &&  (a0  <=  (e0 + (e0 * acceptableDiff)))), true);
-        Assert.assertEquals((( a1 >= (e1 - (e1 * acceptableDiff)))  &&  (a1  <=  (e1 + (e1 * acceptableDiff)))), true);
-        Assert.assertEquals((( a2 >= (e2 - (e2 * acceptableDiff)))  &&  (a2  <=  (e2 + (e2 * acceptableDiff)))), true);
+        Assert.assertEquals((( occ0 >= (e0 - (e0 * acceptableDiff)))  &&  (occ0  <=  (e0 + (e0 * acceptableDiff)))), true);
+        Assert.assertEquals((( occ1 >= (e1 - (e1 * acceptableDiff)))  &&  (occ1  <=  (e1 + (e1 * acceptableDiff)))), true);
+        Assert.assertEquals((( occ2 >= (e2 - (e2 * acceptableDiff)))  &&  (occ2  <=  (e2 + (e2 * acceptableDiff)))), true);
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
