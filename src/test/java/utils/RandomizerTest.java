@@ -28,7 +28,7 @@ public class RandomizerTest {
         int e1 = 60;  //expected of occ1
         int e2 = 120; //expected of occ2
 
-        // verify that a should be in bounds [e - acceptableDiff; e + acceptableDiff]
+        // verify that occ should be in bounds [e - acceptableDiff; e + acceptableDiff]
         Assert.assertEquals((( occ0 >= (e0 - (e0 * acceptableDiff)))  &&  (occ0  <=  (e0 + (e0 * acceptableDiff)))), true);
         Assert.assertEquals((( occ1 >= (e1 - (e1 * acceptableDiff)))  &&  (occ1  <=  (e1 + (e1 * acceptableDiff)))), true);
         Assert.assertEquals((( occ2 >= (e2 - (e2 * acceptableDiff)))  &&  (occ2  <=  (e2 + (e2 * acceptableDiff)))), true);
